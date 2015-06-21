@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:600' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background: #5171A5;
+            font-family: 'Titillium Web', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #banner {
+            text-align: center;
+            color: #D8E4FF;
+            font-size: 48pt;
+            margin: 80px 0;
+        }
+        input {
+            border: none;
+            border-radius: 4px;
+            background: #D8E4FF;
+            color: #00120B;
+            outline: none;
+            font-size: 14pt;
+            width: 80%;
+            box-sizing: border-box;
+            padding: 8px 12px;
+        }
+        button {
+            border: none;
+            border-radius: 4px;
+            color: #D8E4FF;
+            background: #304363;
+            outline: none;
+            font-size: 14pt;
+            width: 15%;
+            box-sizing: border-box;
+            padding: 8px 12px;            
+        }
+        #container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #chat {
+            margin: 0;
+            padding: 0;
+        }
+        #chat li {
+            color: #D8E4FF;
+            font-size: 22pt;
+            list-style: none;
+            background: #5F7CAC;
+            padding: 1% 2%;
+            border-radius: 4px;
+            width: 60%;
+            box-sizing: border-box;
+            margin-bottom: 1.5%;
+        }
+        #log {box-sizing: border-box; width: 100%;}
+        #chat li.right {
+            background: #4B6898;
+            width: 60%;
+            color: #A4B4CB;
+            margin-left: 40%;
+            text-align: right;
+            font-size: 22pt;
+            list-style: none;
+        }
+    </style>
+    </head>
+    <body>
+    <div id="container">
+        <div id="log">
+            <div id="banner">drunk.ai</div>
+            <ul id="chat"></ul>
+        </div>
+        <div id="input">
+            <input type="text" id="message_input">
+            <button>Send</button>
+        </div>
+    </div>
+    <script src="scripts/dabbie.js"></script>
+    <script>
+        var input = document.getElementById("message_input");
+        var chat = document.getElementById("chat");
+        var get_response = function (r) {
+        }
+
+        input.onkeypress = function (e) {
+            if (e.keyCode == 13) {
+                var r = input.value;
+                var el = "<li class='right'>" + r + '</li>\n';
+                chat.innerHTML += el;
+                input.value = "";
+                setTimeout(function () {
+                    write_response(exports.reply(r));
+                }, 500)
+            }
+        }
+        var write_response = function (r) {
+            var el = "<li>" + r + '</li>\n';
+            chat.innerHTML += el;
+        }
+        write_response(exports.start())
+    </script>
+    </body>
+</html>
