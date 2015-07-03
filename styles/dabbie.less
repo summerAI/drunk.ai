@@ -1,0 +1,105 @@
+body {
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right bottom,
+        color-stop(0, rgb(160, 209, 219)),
+        color-stop(1, rgb(160, 187, 219))
+    );
+    background-image: -o-linear-gradient(right bottom, rgb(160, 209, 219) 0%, rgb(160, 187, 219) 100%);
+    background-image: -moz-linear-gradient(right bottom, rgb(160, 209, 219) 0%, rgb(160, 187, 219) 100%);
+    background-image: -webkit-linear-gradient(right bottom, rgb(160, 209, 219) 0%, rgb(160, 187, 219) 100%);
+    background-image: -ms-linear-gradient(right bottom, rgb(160, 209, 219) 0%, rgb(160, 187, 219) 100%);
+    background-image: linear-gradient(to right bottom, rgb(160, 209, 219) 0%, rgb(160, 187, 219) 100%);
+
+    font-family: 'Titillium Web', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+#banner {
+    text-align: center;
+    color: white;
+    font-size: 4em;
+    margin: 80px 0;
+}
+input {
+    border: none;
+    border-radius: 4px;
+    font-family: 'Titillium Web', sans-serif;
+    background: rgba(255,255,255,.6);
+    color: #5F6666;
+    outline: none;
+    font-size: 14pt;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+}
+button {
+    border: none;
+    border-radius: 4px;
+    color: #D8E4FF;
+    background: #304363;
+    outline: none;
+    font-size: 14pt;
+    width: 15%;
+    box-sizing: border-box;
+    padding: 8px 12px;            
+}
+#container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#chat {
+    margin: 0;
+    padding: 0;
+}
+#chat li
+    {
+    list-style: none;
+    margin-bottom: 8px;
+    span 
+        {
+        display: inline-block;
+        color: #5F6666;
+        font-size: 2em;
+        background: rgba(255,255,255,.3);
+        padding: 1% 2%;
+        border-radius: 4px;
+        max-width: 80%;
+        widows: auto;
+        box-sizing: border-box;
+        }
+    &.right
+        {
+        text-align: right;
+        }
+    &.right span 
+        {
+        background: rgba(0,0,0,.2);
+        width: auto;
+        color: white;
+        text-align: right;
+        list-style: none;
+        }
+    }
+#log {box-sizing: border-box; width: 100%;}
+
+@media all and (max-width: 600px) {
+    body {
+        font-size: 0.64em;
+    }
+    #log { margin-bottom: 40px;}
+    #input
+        {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        }
+}
