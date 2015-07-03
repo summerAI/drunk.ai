@@ -19,6 +19,7 @@ body {
 input {
   border: none;
   border-radius: 4px;
+  margin-top: 28px;
   font-family: 'Titillium Web', sans-serif;
   background: rgba(255, 255, 255, 0.6);
   color: #5F6666;
@@ -63,6 +64,16 @@ button {
   max-width: 80%;
   widows: auto;
   box-sizing: border-box;
+  position: relative;
+}
+#chat li span:after {
+  content: "";
+  display: block;
+  width: 27px;
+  position: absolute;
+  bottom: -21px;
+  height: 21px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAVCAYAAAC33pUlAAAAAXNSR0IArs4c6QAAAWFJREFUSA29ls1LAzEQxY0o2ip4Kh5U8F4Qz/7/J0XPrSeliCwV1FK/Krr+Ht0tcXey6aZiIN3szHvzOpNJWrcWGHmeH+E6DbhTzNl6A+uxwZfiegmKOeemRPxMiRrghMUKwnuAmGKeBjMrov1VZjnxJv8lNmZbZjGxjZR6GZw72WJimwaxrekLwr1IMbFu28gGfkQJJRgW41Dv4F+1jDNiDCWk0ZTZ/hyy0udQjVFGaBI7LEGJzwm8W59rilHCXUB7PrDl+gP8BVnpfC2GKYZXl3DqUDOcI/RaDVATI6ttQMdV4JLvyuQKoScLb3XbCUDLbvF9mxrhEqEH3+ivfwUlqwOcKV34DE979OYHr64XYgh1cPargMi79ueGOUDoO4Kdlwsh3RRnzK0YofAr8Ih5jcjSP0MOId0UElJjxIbKlTF1BdW6LUZWGXtM/QUoryfZVB59Y50XPXVAszZZgK+NH7VJUotM77ubAAAAAElFTkSuQmCC);
 }
 #chat li.right {
   text-align: right;
@@ -73,6 +84,10 @@ button {
   color: white;
   text-align: right;
   list-style: none;
+}
+#chat li.right span:after {
+  right: 5px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAVCAYAAAC33pUlAAAAAXNSR0IArs4c6QAAAVhJREFUSA2tlttOAkEMhhfPxhPxRXz/B/HWG70VPEdUwP8jKYzMtDuz0qRhaf/2n3a6zY66rruRHkh3JbdK9FlKtifjrOQYaPtRXJGIfJC5TgCN8hHhd13ZVx/ZewRo9NFGV6jsVRqC3OjcschNGwtkS+l0Y/rXE/lcMefERbQ59iO4kb0JFE5SlCTxnSTP2aOR4bjPvO2G0ygkLZux5WRhQJRMPg7/Iv0u4dLK8D9I5yVgg+3aw26TcaI7KRM6VCAblYLTNpqfXQnp2AyNvxTAosh2bomM3EwmQef8GSDc/eN2nEcGjs3C/V1Ki22R3ZNDOdgmvFJricgA0Q5Ir6R9WEH+CF15kq5XYU0CXgk2zJGU9tRWCe5MSuxq4GrIhF21hP35LDVS7H0ClgqJXdaSWVKmlJPy4nInfE70fVIcC3Mhnda2RFhX2DjcKUkZDFNyM2D2qTD5BXRzOxegUnEKAAAAAElFTkSuQmCC);
 }
 #log {
   box-sizing: border-box;
@@ -92,5 +107,12 @@ button {
     left: 0;
     padding: 10px;
     box-sizing: border-box;
+  }
+  #chat li span:after,
+  #chat li.right span:after {
+    height: 11px;
+    width: 14px;
+    bottom: -11px;
+    background-size: 100% 100%;
   }
 }

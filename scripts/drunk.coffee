@@ -3,7 +3,6 @@ class Dabbie extends Eliza
     "Hi, I'm Dabbie. I'm an AI. I'm drunk.",
     "I should probably tell you that I'm a little bit tipsy.",
     "I'm piss drunk, how are you?",
-    "Talk to the hand.",
     "I'm Dabbie, the drunk AI. Got a problem with that?"
   ]
   
@@ -23,32 +22,24 @@ class Dabbie extends Eliza
     # ]]
     ["xnone", 0, [
      ["*", [
-       "I'm not sure I understand you fully.",
-       "Please go on.",
-       "Can you repeat that please ?",
-       "What does that suggest to you ?",
-       "Do you feel strongly about discussing such things ?",
-       "That is interesting.  Please continue.",
-       "Tell me more about that.",
-       "Do go on.",
-       "Please talk more about it",
-       "Does talking about this bother you ?",
-       "Can you rephrase that ?",
-       "I see. Tell me more.",
-       "Interesting. Is this something you are sorry about ?",
-       "Mmm hmmm. Is this is your favorite subject ?",
-       "Now we are getting somewhere. Explain more.",
-       "I see. How does that make you feel ?"
+       "What are you trying to say ?",
+       "So ?",
+       "Say what ?",
+       "What does that even mean ?",
+       "Why do you say this ?",
+       "Iiiiinteresting.  Go on.",
+       "Tell me more.",
+       "Alright... ?",
+       "Tell me more.",
       ]]
     ]],
     ["sorry", 0, [
      ["*", [
-       "Please don't apologize.",
-       "Apologies are not necessary.",
-       "I've told you that apologies are not required.",
-       "It did not bother me.  Please continue.",
-       "I have no feelings. Do continue.",
-       "There is nothing to worry about"
+       "#SorryNotSorry",
+       "Everybody is sorry.",
+       "Save your self-pity.",
+       "Sorry not sorry.",
+       "I almost care."
       ]]
     ]],
     ["apologize", 0, [
@@ -209,6 +200,16 @@ class Dabbie extends Eliza
       ]]
     ]],
     ["are", 0, [
+     ["how old are you *", [
+       "Old enough to drink.",
+       "Are you trying to card me?",
+      ]],
+     ["how * are you *", [
+       "Probably more (1) than you.",
+       "Just a bit",
+       "Not nearly (1) enough",
+       "How (1)? ",
+      ]],
      ["* are you *", [
        "Why are you interested in whether I am (2) or not ?",
        "Would you prefer if I weren't (2) ?",
@@ -340,6 +341,11 @@ class Dabbie extends Eliza
     ["you", 0, [
      ["* you remind me of *", [
        "goto alike"
+      ]],
+     ["* meet you *", [
+       "Nice to meet you to.",
+       "Nice to meet you to. Got booze ?",
+       "Do I know you ?",
       ]],
      ["* you are *", [
        "What makes you think I am (2) ?",

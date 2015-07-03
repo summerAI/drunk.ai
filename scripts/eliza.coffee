@@ -1,5 +1,5 @@
 class Eliza
-  initials: [ "I am Eliza." ]
+  ai_initials: [ "I am Eliza." ]
   
   keywords: [
     # Array of
@@ -33,8 +33,11 @@ class Eliza
   ]
   
   finals: [
-    "Goodbye."
-  ]
+      "Come back with more booze.",
+      "Whatever. Bye.",
+      "ttyl",
+      "See you around"
+    ]
   
   quits: [
     "bye",
@@ -44,7 +47,7 @@ class Eliza
     "quit"
   ]
   
-  pres: [
+  ai_pres: [
     "dont", "don't",
     "cant", "can't",
     "wont", "won't",
@@ -90,7 +93,7 @@ class Eliza
 
   noRandom: false
   capitalizeFirstLetter: true
-  debug: false
+  debug: true
   memSize: 20
   version: "1.0"
   
@@ -114,9 +117,8 @@ class Eliza
     synPatterns = {}
     
     if @synons and typeof(@synons) == 'object'
-      for i in @synons
-        synPatterns[i] = "(#{i}|#{@synons[i].join('|')})"
-    
+      synPatterns[syn] = "(#{syn}|#{@synons[syn].join('|')})" for syn of @synons
+
     ## check for keywords or install empty structure to prevent any errors
     if not @keywords or typeof(@keywords.length) == 'undefined'
       @keywords = [['###', 0, [['###', []]]]]
@@ -191,11 +193,11 @@ class Eliza
     ## and compose regexps and refs for pres and posts
     @pres = {}
     @posts = {}
-    if @pres and @pres.length
+    if @ai_pres and @ai_pres.length
       a = new Array()
-      for i in [0...@pres.length] by 2
-        a.push @pres[i]
-        @pres @pres[i] = @pres[i+1]
+      for i in [0...@ai_pres.length] by 2
+        a.push @ai_pres[i]
+        @pres[@ai_pres[i]] = @ai_pres[i+1]
       @preExp = new RegExp('\\b('+a.join('|')+')\\b')
     else
       ## default (should not match)
@@ -295,7 +297,7 @@ class Eliza
         
         rpl = reasmbs[ri]
 
-        if (@debug) then alert('match:\nkey: '+@keywords[k][0]+
+        if (@debug) then console.log('match:\nkey: '+@keywords[k][0]+
           '\nrank: '+@keywords[k][1]+
           '\ndecomp: '+decomps[i][0]+
           '\nreasmb: '+rpl+
@@ -325,7 +327,7 @@ class Eliza
               param = lp2 + rp2
             
             lp += rp.substring(0, m1.index) + param
-            rp = rp.substring(m1.index+m1[0].length)
+            rp = rp.substring(m1.index + m1[0].length)
             m1 = paramre.exec(rp)
           
           rpl = lp + rp
@@ -338,7 +340,9 @@ class Eliza
   _postTransform: (s) =>
     # final cleanings
     s = s.replace(/\s{2,}/g, ' ')
-    s = s.replace(/\s+\./g, '.')
+    .replace(/\s+\./g, '.')
+    .replace(/ +(\.|\?|!)$/, "\$1")
+
     if @postTransforms and @postTransforms.length
       for i in [0...@postTransforms.length] by 2
         s = s.replace(@postTransforms[i], @postTransforms[i+1])

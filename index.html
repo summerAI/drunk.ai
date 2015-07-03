@@ -17,22 +17,33 @@
             <input type="text" id="message_input">
         </div>
     </div>
+    <script src="scripts/old.js"></script>
     <script src="scripts/drunk.js"></script>
     <script>
         var dabbie = new Dabbie(false)
 
         var input = document.getElementById("message_input");
         var chat = document.getElementById("chat");
-
-        input.onkeypress = function (e) {
+        var last = "";
+        var next = "";
+        input.onkeydown = function (e) {
             if (e.keyCode == 13) {
-                var r = input.value;
+                last = input.value;
+                var r = last;
                 var el = "<li class='right'><span>" + r + '</span?</li>\n';
                 chat.innerHTML += el;
                 input.value = "";
                 setTimeout(function () {
                     write_response(dabbie.transform(r));
                 }, 500)
+            }
+            else if (e.keyCode == 38) {
+                next = input.value;
+                input.value = last;
+            } else if (e.keyCode == 40) {
+                console.log("down")
+                last = input.value;
+                input.value = next;
             }
         }
         var write_response = function (r) {
